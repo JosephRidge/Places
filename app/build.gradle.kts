@@ -50,6 +50,7 @@ dependencies {
     implementation(libs.ktor.client.android)
     implementation(libs.moshi)
     implementation(libs.androidx.lifecycle.viewmodel.compose)
+    implementation(libs.storage.kt)
 
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.lifecycle.runtime.ktx)
