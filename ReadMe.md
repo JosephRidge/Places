@@ -1,7 +1,7 @@
 
 
 Resources:
-(Supabase + Jetpack Compose)[https://supabase.com/docs/reference/kotlin/insert]
+[https://supabase.com/docs/reference/kotlin/insert](Supabase + Jetpack Compose) 
 
 
 // 
