@@ -12,6 +12,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import com.jayr.placessupabase.ui.screens.home.HomeScreen
+import com.jayr.placessupabase.ui.screens.postmedia.PostMedia
 import com.jayr.placessupabase.ui.theme.PlacesSupabaseTheme
 
 class MainActivity : ComponentActivity() {
@@ -21,7 +22,7 @@ class MainActivity : ComponentActivity() {
         setContent {
             PlacesSupabaseTheme {
                 Scaffold(modifier = Modifier.fillMaxSize()) { innerPadding ->
-                    HomeScreen(
+                    PostMedia(
                         modifier = Modifier.padding(innerPadding)
                     )
                 }
