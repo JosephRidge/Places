@@ -32,4 +32,10 @@ class HomeViewModel: ViewModel() {
             getPlaces()
         }
     }
+
+    fun insertImage(fileName:String, fileBytes: ByteArray ){
+        viewModelScope.launch {
+            placesRepository.insertImage(fileName, fileBytes)
+        }
+    }
 }

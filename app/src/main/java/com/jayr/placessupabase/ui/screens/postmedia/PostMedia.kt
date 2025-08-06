@@ -1,38 +1,12 @@
+package com.jayr.placessupabase.ui.screens.postmedia
 
+import androidx.compose.runtime.Composable
+import androidx.compose.ui.platform.LocalContext
 
-Resources:
-(https://supabase.com/docs/reference/kotlin/insert)[Supabase + Jetpack Compose]
-https://github.com/square/moshi?tab=readme-ov-file#download
-
-// 
-```agsl
-
-    override suspend fun insertImage(fileName: String, fileBytes: ByteArray): String? {
-        val bucket = supabase.storage.from("jmedia")
-        var uploadedUrl: String? = null
-
-        bucket.uploadAsFlow(fileName, fileBytes).collect { status ->
-            when (status) {
-                is UploadStatus.Progress -> {
-                    val percent = status.totalBytesSend.toFloat() / status.contentLength * 100
-                    println("Progress: $percent%")
-                }
-                is UploadStatus.Success -> {
-                    println("Upload successful!")
-                    uploadedUrl = bucket.publicUrl(fileName)
-                }
-            }
-        }
-
-        return uploadedUrl
-    }
-```
-# upload image
-
-```agsl
 @Composable
 fun SelectScreen(
-    landViewModel: LandViewModel = viewModel(), modifier: Modifier ) {
+    landViewModel: LandViewModel = viewModel(),
+    modifier: Modifier ) {
     val context = LocalContext.current
 
     // getfilename
@@ -71,17 +45,15 @@ fun SelectScreen(
 
 
 
-  Column(
+    Column(
 
-      modifier =modifier.fillMaxSize()) {    Button(onClick = {
-      val intent = Intent(Intent.ACTION_GET_CONTENT).apply {
-          type = "*/*" // or "image/*" or "video/*"
-          addCategory(Intent.CATEGORY_OPENABLE)
-      }
+        modifier =modifier.fillMaxSize()) {    Button(onClick = {
+        val intent = Intent(Intent.ACTION_GET_CONTENT).apply {
+            type = "*/*" // or "image/*" or "video/*"
+            addCategory(Intent.CATEGORY_OPENABLE)
+        }
 
-      launcher.launch(intent)
-  }) {
-      Text(text = "pick media")
-  }}}
-
-```
+        launcher.launch(intent)
+    }) {
+        Text(text = "pick media")
+    }}}

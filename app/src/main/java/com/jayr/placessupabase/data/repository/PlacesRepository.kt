@@ -5,6 +5,9 @@ import io.github.jan.supabase.auth.Auth
 import io.github.jan.supabase.createSupabaseClient
 import io.github.jan.supabase.postgrest.Postgrest
 import io.github.jan.supabase.postgrest.from
+import io.github.jan.supabase.storage.UploadStatus
+import io.github.jan.supabase.storage.storage
+import io.github.jan.supabase.storage.uploadAsFlow
 
 class PlacesRepository: PlacesService {
 
@@ -30,6 +33,29 @@ class PlacesRepository: PlacesService {
     override suspend fun updatePlace(place: Place): Place {
         TODO("Not yet implemented")
     }
+
+    override suspend fun insertImage(
+        fileName: String,
+        fileBytes: ByteArray
+    ): String? {
+        val bucket = supabase.storage.from("deepseek")
+        var uploadedUrl: String? = null
+
+        bucket.uploadAsFlow(fileName, fileBytes).collect { status ->
+            when (status) {
+                is UploadStatus.Progress -> {
+                    val percent = status.totalBytesSend.toFloat() / status.contentLength * 100
+                    println("Progress: $percent%")
+                }
+                is UploadStatus.Success -> {
+                    println("Upload successful!")
+                    uploadedUrl = bucket.publicUrl(fileName)
+                }
+            }
+        }
+        return uploadedUrl
+    }
+
 
     override suspend fun deletePlace(id: Int) {
         TODO("Not yet implemented")
