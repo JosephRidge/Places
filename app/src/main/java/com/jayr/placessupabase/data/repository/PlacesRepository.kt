@@ -22,7 +22,7 @@ class PlacesRepository: PlacesService {
         //install other modules
     }
 
-    override suspend fun createPlace(place: Place): Place {
+    override suspend fun createPlace(place: Place,): Place {
       return  supabase.from("places").insert(place) {
             select()
         }.decodeSingle<Place>()

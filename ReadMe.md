@@ -1,10 +1,12 @@
 
+Mini Documentation to help with the set up:
+https://docs.google.com/document/d/1C5rWr_Pvhk0-SxxhhRXTqY9R5RXF8CemEZ7U7HBhUQo/edit?usp=sharing
 
 Resources:
-(https://supabase.com/docs/reference/kotlin/insert)[Supabase + Jetpack Compose]
-https://github.com/square/moshi?tab=readme-ov-file#download
+[Supabase + Jetpack Compose](https://supabase.com/docs/reference/kotlin/insert)
+[moshi dependency)[https://github.com/square/moshi?tab=readme-ov-file#download]
 
-// 
+ 
 ```agsl
 
     override suspend fun insertImage(fileName: String, fileBytes: ByteArray): String? {
